@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}BagEasy.in{% endblock title %}
+
+
+{% block content %}
+
+<style>
+
+    .my-5 {
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        display: inline-block;
+    }
+
+    .view-all-link {
+        display: inline-block;
+        position: absolute;
+        right: 70px;
+        text-decoration: none;
+        color: #871e09;
+    }
+
+    .card-deck {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        width: 13rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        text-align: center;
+        height: 170px;
+    }
+
+    .card-text {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-dark {
+        margin-top: 15px;
+    }
+</style>
+
+
+<div class="banner">
+    <img src="https://bageasy.in/cdn/shop/files/bageasy_Post_767_x_850_px_84881149-cbba-4bfd-8a32-cf81c88d9bcf_767x.png?v=1669892599">
+</div>
+
+<section class="my-2">
+  <div class="container">
+      <div class="row">
+          <div class="my-5">
+              <div style="display: inline-block;"><h4>All Products</h4></div>
+              <div style="display: inline-block;position: absolute;right: 70px;"><a style="text-decoration: none;color: #871e09;" href="">View all</a></div>
+          </div>
+          {% for item in allproducts %}
+            <div class="card-deck col-lg-2 col-md-3 mb-5">
+        <div class="card border-0 " style="width: 13rem;">
+            <img class="card-img-top img-fluid" src="{{item.product_image.url}}" alt="{{item.name}}" style="max-width: 400px; max-height: 300px; min-height:300px;">
+            <div class="card-body d-flex flex-column align-items-center">
+                <a style="text-decoration: none; color: dimgray;" href="">
+                    <p class="card-title text-center">{{item.name}} </p>
+                </a>
+                <p class="card-text">
+                    <span style="color: rgb(114, 10, 10); font-size: 14px; font-weight: bold;">Rs. {{item.selling_price}}</span>
+                    <span style="margin-left: 10px; color: gray;"><s>Rs. {{item.orginal_price}}</s></span>
+                </p>
+                <a href="" class="btn btn-dark mt-auto">Buy Now</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+      </div>
+  </div>
+</section>
+
+
+{% endblock content %}
